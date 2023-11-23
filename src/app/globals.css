@@ -25,3 +25,23 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.contenedorPrincipal{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* *************** PAGINA LOGIN */
+.btnLogin{
+  background-color: rgb(161, 255, 30);
+  width: 220px;
+}
+.contenedorLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
