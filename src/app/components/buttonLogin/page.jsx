@@ -2,7 +2,9 @@
 import { Button } from "@nextui-org/button";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import { useState } from "react";
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function BtnLogin() {
 
@@ -19,6 +21,16 @@ export default function BtnLogin() {
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth = getAuth();
+    const [userExist, setUserExist] = useState(null)
+    const [dataUser, setDataUser] = useState([])
+
+
+    const handleLogout = async () => {
+        signOut(auth).then(() => {
+            setUserExist(null)
+            toast.success(`Gacias vuelvas prontos! ${dataUser.displayName}`)
+        }).catch((error) => { });
+    }
 
     const handleLogin = async () => {
         signInWithPopup(auth, provider)
@@ -28,13 +40,16 @@ export default function BtnLogin() {
                 const token = credential.accessToken;
                 // The signed-in user info.
                 const user = result.user;
-                alert(result.user.displayName)
+                
+                setUserExist(user) // ESTE ESTADO LO USO PARA SWITCHEAR EL BOTON DE INGRESAR MAIL CON EL DE CERRAR SESION
+                setDataUser(user) // EN ESTE ESTADO MUESTRO DATA DEL USUARIO
+                toast.success(`Bienvenido/a! ${result.user.displayName}`)
+
                 // IdP data available using getAdditionalUserInfo(result)
                 // Redirigir a la página principal
-                
+
                 // ...
             }).catch((error) => {
-                // Handle Errors here.
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 // The email of the user's account used.
@@ -43,12 +58,25 @@ export default function BtnLogin() {
                 const credential = GoogleAuthProvider.credentialFromError(error);
                 // ...
             });
-
     };
 
     return (
-        <Button className="btnLogin" variant="shadow" onClick={handleLogin}>
-            Ingresar con gmail
-        </Button>
+        <>
+            <Toaster
+                position="bottom-right"
+                reverseOrder={false}
+            />
+            {
+                userExist === null
+                    ?
+                    <Button className="btnLogin" variant="shadow" onClick={handleLogin}>
+                        Ingresar con gmail
+                    </Button>
+                    :
+                    <Button onClick={handleLogout} color="danger">
+                        Cerrar sesión
+                    </Button>
+            }
+        </>
     )
 }
