@@ -45,3 +45,7 @@ body {
   align-items: center;
   flex-direction: column;
 }
+
+.menuButton{
+  cursor: pointer;
+}
