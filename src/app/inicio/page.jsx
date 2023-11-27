@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from "react";
-import { AvatarIcon, Button, Flex } from "@nextui-org/react";
+import { AvatarIcon, Button, Flex, Select, SelectItem } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import Image from "next/image";
 import { CiHome } from "react-icons/ci";
@@ -11,12 +11,14 @@ import { Divider } from "@nextui-org/react";
 import { FaMapPin } from "react-icons/fa6";
 import { FaMapLocationDot } from "react-icons/fa6";
 import data from "../mock.json";
-
+import Map from '../components/Map/Map'
+import barrios from '../barrios.json'
 
 const Page = () => {
     const [ubicacion, setUbicacion] = useState("");
     const [search, setSearch] = useState("")
     const [suggestions, setSuggestions] = useState([]);
+    const [query, setQuery] = useState("cafeteria");
 
     useEffect(() => {
         const filteredSuggestions = data.filter((item) =>
@@ -30,6 +32,15 @@ const Page = () => {
         setSearch(e.target.value);
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Esta es la ubicacion', ubicacion);
+    };
+
+    const handleSelectChange = (value) => {
+        setUbicacion(value.target.value); // Actualiza el estado con el valor seleccionado del Select
+    };
+
     console.log(search)
 
     return (
@@ -38,15 +49,33 @@ const Page = () => {
                 <Image src="/logo.png" width={200} height={200} alt={'Logo'} />
             </div>
             <div className="flex-1 text-center mb-4">
-                <Input
-                    type="email"
-                    variant="bordered"
-                    placeholder="Busca locales en..."
-                    className="max-w-xs"
-                    value={search}
-                    onChange={handleInputChange}
-                />
-                {search.length > 2 && (
+                <form onSubmit={handleSubmit} className='flex w-full'>
+                    <Select
+                        label="Barrio"
+                        placeholder="Selecciona una opcion"
+                        value={ubicacion}
+                        onChange={handleSelectChange}
+                        style={{ width: '100%' }} width="100%"
+                    >
+                        {barrios.map((barrio) => (
+                            <SelectItem key={barrio.nombre} value={barrio.nombre}>
+                                {barrio.nombre}
+                            </SelectItem>
+                        ))}
+                    </Select>
+                    {/* <Input
+                        type="text"
+                        variant="bordered"
+                        placeholder="Busca locales por zona..."
+                        className="max-w-xs"
+                        value={search}
+                        onChange={handleInputChange}
+                    /> */}
+                    <Button color="secondary" type="submit" className='mt-2 ml-3'>
+                        Buscar
+                    </Button>
+                </form>
+                {/* {search.length > 2 && (
                     <div className="suggestions">
                         {suggestions.length > 0 ? (
                             suggestions.map((item, index) => (
@@ -64,8 +93,12 @@ const Page = () => {
                             <div className="no-suggestions text-gray-500">No hay coincidencias</div>
                         )}
                     </div>
-                )}
+                )} */}
             </div>
+
+            {ubicacion && (
+                <Map ubicacion={ubicacion} zoom={20} />
+            )}
             <div className="flex justify-center w-full border-t-1 border-solid border-gray-500">
                 <div className="flex w-full max-w-screen-lg mt-1">
                     <div className="w-1/4 px-5 menuButton">
@@ -82,7 +115,6 @@ const Page = () => {
                     </div>
                 </div>
             </div>
-
         </div>
 
     );
