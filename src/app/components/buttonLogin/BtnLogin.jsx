@@ -20,7 +20,7 @@ export default function BtnLogin() {
         measurementId: "G-J543N4YJ60"
     };
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
+   // const analytics = getAnalytics(app);
     const auth = getAuth();
     const [userExist, setUserExist] = useState(null)
     const [dataUser, setDataUser] = useState([])
