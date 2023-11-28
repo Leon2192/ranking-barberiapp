@@ -36,14 +36,13 @@ const Map = ({ ubicacion, zoom }) => {
 
     useEffect(() => {
         if (isLoaded && !loadError && map) {
-            const placesService = new window.google.maps.places.PlacesService(map);
+            const placesService = new google.maps.places.PlacesService(map);
 
-            //Con esta funcion se limpia la busqueda antes de voler a cambiar de barrio
             const clearMarkers = () => {
-                if (map) {
-                    for (const marker of map.markers) {
+                if (map && map.markers) {
+                    map.markers.forEach(marker => {
                         marker.setMap(null);
-                    }
+                    });
                     map.markers = [];
                 }
             };
@@ -55,10 +54,10 @@ const Map = ({ ubicacion, zoom }) => {
                     type: 'hair_care'
                 },
                 (results, status) => {
-                    if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+                    if (status === google.maps.places.PlacesServiceStatus.OK) {
                         clearMarkers();
                         results.forEach(result => {
-                            const marker = new window.google.maps.Marker({
+                            const marker = new google.maps.Marker({
                                 position: result.geometry.location,
                                 map: map,
                                 label: {
@@ -68,6 +67,7 @@ const Map = ({ ubicacion, zoom }) => {
                                     fontWeight: 'bold'
                                 }
                             });
+                            if (!map.markers) map.markers = [];
                             map.markers.push(marker);
                         });
                     }
@@ -75,7 +75,7 @@ const Map = ({ ubicacion, zoom }) => {
             );
         }
     }, [barrios, isLoaded, loadError, map, ubicacion]);
-
+    
     const handleLoad = loadedMap => {
         setMap(loadedMap);
         loadedMap.markers = []; // Inicializar un array para almacenar los marcadores en la instancia del mapa
