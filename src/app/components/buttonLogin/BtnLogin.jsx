@@ -1,4 +1,4 @@
-//"use client"
+"use client"
 import { Button } from "@nextui-org/button";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
