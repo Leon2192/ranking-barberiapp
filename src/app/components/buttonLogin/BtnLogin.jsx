@@ -6,21 +6,22 @@ import { useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
-const firebaseConfig = {
-    apiKey: "AIzaSyCjMVzLiryaABg_Yc1Wco5cvrzp67DoUWw",
-    authDomain: "ranking-peluqueriapp.firebaseapp.com",
-    projectId: "ranking-peluqueriapp",
-    storageBucket: "ranking-peluqueriapp.appspot.com",
-    messagingSenderId: "850437328091",
-    appId: "1:850437328091:web:dcae914475c8405e60d0fe",
-    measurementId: "G-J543N4YJ60"
-};
-const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+
 
 export default function BtnLogin() {
 
     const provider = new GoogleAuthProvider();
+    const firebaseConfig = {
+        apiKey: "AIzaSyCjMVzLiryaABg_Yc1Wco5cvrzp67DoUWw",
+        authDomain: "ranking-peluqueriapp.firebaseapp.com",
+        projectId: "ranking-peluqueriapp",
+        storageBucket: "ranking-peluqueriapp.appspot.com",
+        messagingSenderId: "850437328091",
+        appId: "1:850437328091:web:dcae914475c8405e60d0fe",
+        measurementId: "G-J543N4YJ60"
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
     const [userExist, setUserExist] = useState(null)
     const [dataUser, setDataUser] = useState([])
     const router = useRouter()
