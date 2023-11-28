@@ -11,13 +11,13 @@ export default function BtnLogin() {
 
     const provider = new GoogleAuthProvider();
     const firebaseConfig = {
-        apiKey: "AIzaSyCjMVzLiryaABg_Yc1Wco5cvrzp67DoUWw",
-        authDomain: "ranking-peluqueriapp.firebaseapp.com",
-        projectId: "ranking-peluqueriapp",
-        storageBucket: "ranking-peluqueriapp.appspot.com",
-        messagingSenderId: "850437328091",
-        appId: "1:850437328091:web:dcae914475c8405e60d0fe",
-        measurementId: "G-J543N4YJ60"
+        apiKey: process.env.FIREBASE_API_KEY,
+        authDomain: process.env.AUTH_DOMAIN,
+        projectId: process.env.PROJECT_ID,
+        storageBucket: process.env.STORAGE_BUCKET,
+        messagingSenderId: process.env.MESSAGING_SENDER_ID,
+        appId: process.env.APP_ID,
+        measurementId: process.env.MEASUREMENT_ID
     };
     const app = initializeApp(firebaseConfig);
     //  const analytics = getAnalytics(app);
