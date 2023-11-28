@@ -4,7 +4,7 @@ import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { useState } from "react";
-import toast, { Toaster } from 'react-hot-toast';
+//import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
 export default function BtnLogin() {
@@ -30,7 +30,7 @@ export default function BtnLogin() {
     const handleLogout = async () => {
         signOut(auth).then(() => {
             setUserExist(null)
-            toast.success(`Gacias vuelvas prontos! ${dataUser.displayName}`)
+            // toast.success(`Gacias vuelvas prontos! ${dataUser.displayName}`)
         }).catch((error) => { });
     }
 
@@ -45,7 +45,7 @@ export default function BtnLogin() {
 
                 setUserExist(user) // ESTE ESTADO LO USO PARA SWITCHEAR EL BOTON DE INGRESAR MAIL CON EL DE CERRAR SESION
                 setDataUser(user) // EN ESTE ESTADO MUESTRO DATA DEL USUARIO
-                toast.success(`Bienvenido/a! ${result.user.displayName}`)
+                //toast.success(`Bienvenido/a! ${result.user.displayName}`)
 
                 // IdP data available using getAdditionalUserInfo(result)
                 // Redirigir a la página principal
@@ -65,10 +65,10 @@ export default function BtnLogin() {
 
     return (
         <>
-            <Toaster
+            {/* <Toaster
                 position="bottom-right"
                 reverseOrder={false}
-            />
+            /> */}
             {
                 userExist === null
                     ?
