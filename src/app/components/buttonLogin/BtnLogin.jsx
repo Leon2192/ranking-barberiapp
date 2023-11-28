@@ -1,4 +1,3 @@
-"use client"
 import { Button } from "@nextui-org/button";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
@@ -6,25 +5,24 @@ import { useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
+const firebaseConfig = {
+    apiKey: "AIzaSyCjMVzLiryaABg_Yc1Wco5cvrzp67DoUWw",
+    authDomain: "ranking-peluqueriapp.firebaseapp.com",
+    projectId: "ranking-peluqueriapp",
+    storageBucket: "ranking-peluqueriapp.appspot.com",
+    messagingSenderId: "850437328091",
+    appId: "1:850437328091:web:dcae914475c8405e60d0fe",
+    measurementId: "G-J543N4YJ60"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+
 export default function BtnLogin() {
 
     const provider = new GoogleAuthProvider();
-    const firebaseConfig = {
-        apiKey: "AIzaSyCjMVzLiryaABg_Yc1Wco5cvrzp67DoUWw",
-        authDomain: "ranking-peluqueriapp.firebaseapp.com",
-        projectId: "ranking-peluqueriapp",
-        storageBucket: "ranking-peluqueriapp.appspot.com",
-        messagingSenderId: "850437328091",
-        appId: "1:850437328091:web:dcae914475c8405e60d0fe",
-        measurementId: "G-J543N4YJ60"
-    };
-    const app = initializeApp(firebaseConfig);
-   // const analytics = getAnalytics(app);
-    const auth = getAuth();
     const [userExist, setUserExist] = useState(null)
     const [dataUser, setDataUser] = useState([])
     const router = useRouter()
-
 
     const handleLogout = async () => {
         signOut(auth).then(() => {
@@ -46,7 +44,6 @@ export default function BtnLogin() {
                 setDataUser(user) // EN ESTE ESTADO MUESTRO DATA DEL USUARIO
                 toast.success(`Bienvenido/a! ${result.user.displayName}`)
 
-                // IdP data available using getAdditionalUserInfo(result)
                 // Redirigir a la página principal
                 router.push('/inicio')
 
