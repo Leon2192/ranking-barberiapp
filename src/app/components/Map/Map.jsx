@@ -9,7 +9,7 @@ const Map = ({ ubicacion, zoom }) => {
 
     const [map, setMap] = useState(null);
     const [placesService, setPlacesService] = useState(null);
-    // const [center, setCenter] = useState({ lat: -34.6464, lng: -58.3866 }); // Arranca siendo Barracas
+
     const [barrios, setBarrios] = useState({
         belgrano: { lat: -34.5621, lng: -58.4567 },
         almagro: { lat: -34.6037, lng: -58.4208 },
@@ -34,22 +34,20 @@ const Map = ({ ubicacion, zoom }) => {
         height: '400px'
     };
 
-    // useEffect(() => {
-    //     if (ubicacion === 'palermo') {
-    //         setPalermo({ lat: -34.5883, lng: -58.4305 });
-    //     } else if (ubicacion === 'belgrano') {
-
-    //     }
-    // }, [ubicacion]);
-
     useEffect(() => {
         if (isLoaded && !loadError && map) {
-            setPlacesService(new window.google.maps.places.PlacesService(map));
-        }
-    }, [isLoaded, loadError, map, ubicacion]);
+            const placesService = new window.google.maps.places.PlacesService(map);
 
-    useEffect(() => {
-        if (isLoaded && !loadError && map && placesService) {
+            //Con esta funcion se limpia la busqueda antes de voler a cambiar de barrio
+            const clearMarkers = () => {
+                if (map) {
+                    for (const marker of map.markers) {
+                        marker.setMap(null);
+                    }
+                    map.markers = [];
+                }
+            };
+
             placesService.nearbySearch(
                 {
                     location: barrios[ubicacion],
@@ -58,8 +56,9 @@ const Map = ({ ubicacion, zoom }) => {
                 },
                 (results, status) => {
                     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+                        clearMarkers();
                         results.forEach(result => {
-                            new window.google.maps.Marker({
+                            const marker = new window.google.maps.Marker({
                                 position: result.geometry.location,
                                 map: map,
                                 label: {
@@ -69,16 +68,20 @@ const Map = ({ ubicacion, zoom }) => {
                                     fontWeight: 'bold'
                                 }
                             });
+                            map.markers.push(marker);
                         });
                     }
                 }
             );
         }
-    }, [isLoaded, loadError, map, placesService, ubicacion, barrios]);
+    }, [barrios, isLoaded, loadError, map, ubicacion]);
 
     const handleLoad = loadedMap => {
         setMap(loadedMap);
+        loadedMap.markers = []; // Inicializar un array para almacenar los marcadores en la instancia del mapa
     };
+
+
 
     if (loadError) {
         return <div>Error al cargar el mapa</div>;

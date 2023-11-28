@@ -55,7 +55,7 @@ const Page = () => {
                         placeholder="Selecciona una opcion"
                         value={ubicacion}
                         onChange={handleSelectChange}
-                        style={{ width: '100%' }} width="100%"
+                        style={{ width: '250px' }}
                     >
                         {barrios.map((barrio) => (
                             <SelectItem key={barrio.nombre} value={barrio.nombre}>
@@ -71,9 +71,9 @@ const Page = () => {
                         value={search}
                         onChange={handleInputChange}
                     /> */}
-                    <Button color="secondary" type="submit" className='mt-2 ml-3'>
+                    {/* <Button color="secondary" type="submit" className='mt-2 ml-3'>
                         Buscar
-                    </Button>
+                    </Button> */}
                 </form>
                 {/* {search.length > 2 && (
                     <div className="suggestions">
