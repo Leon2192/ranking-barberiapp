@@ -56,7 +56,7 @@ const Page = () => {
     return (
         <div className="min-h-screen flex flex-col justify-center items-center">
             <div className="text-center mb-4">
-                <Image src="/logo.png" width={200} height={200} alt={'Logo'} />
+                <Image src="/logo2.png" width={200} height={200} alt={'Logo'} />
             </div>
             <div className="flex-1 text-center mb-4">
                 <form onSubmit={handleSubmit} className='flex w-full'>
@@ -122,16 +122,24 @@ const Page = () => {
             <div className="flex justify-center w-full border-t-1 border-solid border-gray-500">
                 <div className="flex w-full max-w-screen-lg mt-1">
                     <div className="w-1/4 px-5 menuButton">
-                        <CiHome size={'3em'} />
+                        <CiHome style={{
+                            color: 'fff'
+                        }} size={'3em'} />
                     </div>
                     <div className="w-1/4 px-5 menuButton">
-                        <AiOutlineMenuUnfold size={'3em'} />
+                        <AiOutlineMenuUnfold style={{
+                            color: 'fff'
+                        }} size={'3em'} />
                     </div>
                     <div className="w-1/4 px-5 menuButton">
-                        <CiBellOn size={'3em'} />
+                        <CiBellOn style={{
+                            color: 'fff'
+                        }} size={'3em'} />
                     </div>
                     <div className="w-1/4 px-5 menuButton'">
-                        <GrConfigure size={'3em'} />
+                        <GrConfigure style={{
+                            color: 'fff'
+                        }} size={'3em'} />
                     </div>
                 </div>
             </div>
