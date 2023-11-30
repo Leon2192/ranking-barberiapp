@@ -13,7 +13,7 @@ import { FaMapLocationDot } from "react-icons/fa6";
 import data from "../mock.json";
 import Map from '../components/Map/Map'
 import barrios from '../barrios.json'
-import BtnLogout from "../components/buttonLogout/page";
+import BtnLogout from "../components/buttonLogout/BtnLogout";
 import { auth } from "../../../firebase";
 import { getAuth, signOut } from "firebase/auth";
 import { contextAuth } from "../context/contextAuth";

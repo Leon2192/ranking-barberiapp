@@ -3,7 +3,7 @@ import { Button } from "@nextui-org/button";
 import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 import { contextAuth } from "@/app/context/contextAuth";
 

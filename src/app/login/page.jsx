@@ -1,8 +1,8 @@
 "use client"
 import React, { useContext } from "react";
 import Image from "next/image";
-import BtnLogin from './../components/buttonLogin/page';
-import BtnLogout from "../components/buttonLogout/page";
+import BtnLogin from './../components/buttonLogin/BtnLogin';
+import BtnLogout from "../components/buttonLogout/BtnLogout";
 import { contextAuth } from "@/app/context/contextAuth";
 
 export default function Login() {
