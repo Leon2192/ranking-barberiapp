@@ -65,10 +65,12 @@ const Page = () => {
                         placeholder="Selecciona una opcion"
                         value={ubicacion}
                         onChange={handleSelectChange}
-                        style={{ width: '250px' }}
+                        style={{ width: '250px', backgroundColor: '#ffba08', color: '#fff' }}
                     >
                         {barrios.map((barrio) => (
-                            <SelectItem key={barrio.nombre} value={barrio.nombre}>
+                            <SelectItem key={barrio.nombre} value={barrio.nombre} style={{
+                                backgroundColor: '#ffba08', color: '#fff', fontWeight:'bold'
+                            }}>
                                 {barrio.nombre}
                             </SelectItem>
                         ))}
