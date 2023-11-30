@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
     const app = initializeApp(firebaseConfig);
     // const analytics = getAnalytics(app);
     const auth = getAuth();
-    const [userExist, setUserExist] = useState(false)
+    const [userExist, setUserExist] = useState(null)
     const [dataUser, setDataUser] = useState([])
     const router = useRouter()
 
