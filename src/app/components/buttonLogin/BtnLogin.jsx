@@ -24,7 +24,7 @@ export default function BtnLogin() {
     const auth = getAuth();
     const [userExist, setUserExist] = useState(null)
     const [dataUser, setDataUser] = useState([])
-    const router = useRouter()
+    //const router = useRouter()
 
 
     const handleLogout = async () => {
