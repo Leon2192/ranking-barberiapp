@@ -15,7 +15,7 @@ export default function Login() {
         <div className="contenedorLogin">
             <Image src="/logo.png" width={300} height={300} alt={'Logo'} />
             {
-                userExist == undefined
+                userExist == false
                 ?
                 <BtnLogin />
                 :
