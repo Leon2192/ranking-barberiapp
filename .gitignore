@@ -34,3 +34,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Zone identifier files
+public/icon-192x192.png*
+public/icon-256x256.png*
+public/icon-384x384.png*
+public/icon-512x512.png*
+public/manifest.json*
+public/sw.js*
+*\357\200\272Zone.Identifier
