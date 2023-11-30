@@ -5,7 +5,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
+//import { useRouter } from 'next/navigation';
 
 export default function BtnLogin() {
 
@@ -49,7 +49,7 @@ export default function BtnLogin() {
 
                 // IdP data available using getAdditionalUserInfo(result)
                 // Redirigir a la página principal
-                router.push('/inicio')
+                //  router.push('/inicio')
 
                 // ...
             }).catch((error) => {
