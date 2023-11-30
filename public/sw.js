@@ -13,9 +13,14 @@ self.addEventListener("install", (event) => {
                 "/icon-256x256.png",
                 "/icon-384x384.png",
                 "/icon-512x512.png",
+                "/sw.js",
+                "/download.html",
             ]);
         })
     );
+
+    // Agrega el banner de descarga de aplicación al caché
+    cache.add("/download.html");
 });
 
 // Maneja el evento de activación del service worker
