@@ -14,14 +14,12 @@ import data from "../mock.json";
 import Map from '../components/Map/Map'
 import barrios from '../barrios.json'
 import BtnLogout from "../components/buttonLogout/BtnLogout";
-import { auth } from "../../../firebase";
-import { getAuth, signOut } from "firebase/auth";
 import { contextAuth } from "../context/contextAuth";
-import BtnLogin from "../components/buttonLogin/BtnLogin";
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const Page = () => {
-    const { userExist } = useContext(contextAuth) || {};
+    const { userExist, handleLogout } = useContext(contextAuth) || {};
     const [ubicacion, setUbicacion] = useState("");
     const [search, setSearch] = useState("")
     const [suggestions, setSuggestions] = useState([]);
@@ -88,8 +86,13 @@ const Page = () => {
                     </Button> */}
                 </form>
                 {
-                    /* userExist !== undefined &&  */<BtnLogout />
+                    // /* userExist !== undefined &&  */<BtnLogout /> 
                 }
+                <Toaster
+                    position="bottom-right"
+                    reverseOrder={false}
+                />
+                <button onClick={handleLogout}>Cerrar</button>
 
 
                 {/* {search.length > 2 && (

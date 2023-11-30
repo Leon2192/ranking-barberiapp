@@ -2,6 +2,7 @@ import React, { createContext, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { useRouter } from 'next/navigation';
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import toast, { Toaster } from 'react-hot-toast';
 
 export const contextAuth = createContext();
 
@@ -20,7 +21,7 @@ export const AuthProvider = ({ children }) => {
     const app = initializeApp(firebaseConfig);
     // const analytics = getAnalytics(app);
     const auth = getAuth();
-    const [userExist, setUserExist] = useState(null)
+    const [userExist, setUserExist] = useState(false)
     const [dataUser, setDataUser] = useState([])
     const router = useRouter()
 
@@ -28,7 +29,10 @@ export const AuthProvider = ({ children }) => {
     const handleLogout = async () => {
         signOut(auth).then(() => {
             setUserExist(null)
-            toast.success(`Gacias vuelvas prontos! ${dataUser.displayName}`)
+            //toast.success(`Gacias vuelvas prontos! ${dataUser.displayName}`)
+            
+            router.push('/')
+            console.log('Estas deslogueado')
         }).catch((error) => { });
     }
 
@@ -44,7 +48,7 @@ export const AuthProvider = ({ children }) => {
                 setUserExist(user) // ESTE ESTADO LO USO PARA SWITCHEAR EL BOTON DE INGRESAR MAIL CON EL DE CERRAR SESION
                 setDataUser(user) // EN ESTE ESTADO MUESTRO DATA DEL USUARIO
                 toast.success(`Bienvenido/a! ${result.user.displayName}`)
-
+                console.log('Me loguee')
                 // IdP data available using getAdditionalUserInfo(result)
                 // Redirigir a la página principal
                 router.push('/inicio')
@@ -54,26 +58,38 @@ export const AuthProvider = ({ children }) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 // The email of the user's account used.
-                const email = error.customData.email;
+               // const email = error.customData.email;
                 // The AuthCredential type that was used.
                 const credential = GoogleAuthProvider.credentialFromError(error);
                 // ...
             });
     };
 
-    const data = {
-        handleLogin,
-        handleLogout,
-        userExist,
-        setUserExist,
-        dataUser,
-        setDataUser,
-        auth
-    }
+    // const data = {
+    //     handleLogin,
+    //     handleLogout,
+    //     userExist,
+    //     setUserExist,
+    //     dataUser,
+    //     setDataUser,
+    //     auth
+    // }
 
     return (
-        <contextAuth.Provider value={{ data }}>
+        <contextAuth.Provider value={{
+            handleLogin,
+            handleLogout,
+            userExist,
+            setUserExist,
+            dataUser,
+            setDataUser,
+            auth
+        }}>
             {children}
         </contextAuth.Provider>
     );
 };
+
+export const UserAuth = () => {
+    return useContext(contextAuth)
+}
