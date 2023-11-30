@@ -1,17 +1,26 @@
-import React from "react";
+"use client"
+import React, { useContext } from "react";
 import Image from "next/image";
-import BtnLogin from './../components/buttonLogin/BtnLogin';
+import BtnLogin from './../components/buttonLogin/page';
+import BtnLogout from "../components/buttonLogout/page";
+import { contextAuth } from "@/app/context/contextAuth";
 
+export default function Login() {
 
-export default function Login({ isLogged }) {
+    // const { userExist } = useContext(contextAuth);
+    const { userExist } = useContext(contextAuth) || {};
+    console.log(userExist);
 
-    if(isLogged){
-        
-    }
     return (
         <div className="contenedorLogin">
             <Image src="/logo.png" width={300} height={300} alt={'Logo'} />
-            <BtnLogin />
+            {
+                userExist == undefined
+                ?
+                <BtnLogin />
+                :
+                <BtnLogout />
+            }
         </div>
     )
 }

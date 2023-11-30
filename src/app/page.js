@@ -1,15 +1,13 @@
 "use client"
-import Image from 'next/image'
 import Login from './login/page'
-import toast, { Toaster } from 'react-hot-toast';
-
+import { AuthProvider } from '@/app/context/contextAuth'
 
 export default function Home() {
   
   return (
-    <div>
+    <AuthProvider>
       <Login />
-    </div>
+    </AuthProvider>
 
   )
 }

@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { AvatarIcon, Button, Flex, Select, SelectItem } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import Image from "next/image";
@@ -13,12 +13,25 @@ import { FaMapLocationDot } from "react-icons/fa6";
 import data from "../mock.json";
 import Map from '../components/Map/Map'
 import barrios from '../barrios.json'
+import BtnLogout from "../components/buttonLogout/page";
+import { auth } from "../../../firebase";
+import { getAuth, signOut } from "firebase/auth";
+import { contextAuth } from "../context/contextAuth";
+import BtnLogin from "../components/buttonLogin/BtnLogin";
+
 
 const Page = () => {
+    const { userExist } = useContext(contextAuth) || {};
     const [ubicacion, setUbicacion] = useState("");
     const [search, setSearch] = useState("")
     const [suggestions, setSuggestions] = useState([]);
     const [query, setQuery] = useState("cafeteria");
+
+    /* CONTEXT LOGOUT */
+
+    console.log(userExist);
+
+    /* CONTEXT LOGOUT */
 
     useEffect(() => {
         const filteredSuggestions = data.filter((item) =>
@@ -26,7 +39,6 @@ const Page = () => {
         ).slice(0, 5);
         setSuggestions(filteredSuggestions);
     }, [search]);
-
 
     const handleInputChange = (e) => {
         setSearch(e.target.value);
@@ -75,6 +87,11 @@ const Page = () => {
                         Buscar
                     </Button> */}
                 </form>
+                {
+                    /* userExist !== undefined &&  */<BtnLogout />
+                }
+
+
                 {/* {search.length > 2 && (
                     <div className="suggestions">
                         {suggestions.length > 0 ? (
