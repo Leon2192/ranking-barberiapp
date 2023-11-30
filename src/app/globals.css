@@ -18,15 +18,15 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
 }
 
-.contenedorPrincipal{
+.contenedorPrincipal {
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -35,10 +35,11 @@ body {
 }
 
 /* *************** PAGINA LOGIN */
-.btnLogin{
+.btnLogin {
   background-color: rgb(161, 255, 30);
   width: 220px;
 }
+
 .contenedorLogin {
   display: flex;
   justify-content: center;
@@ -46,6 +47,6 @@ body {
   flex-direction: column;
 }
 
-.menuButton{
+.menuButton {
   cursor: pointer;
 }
