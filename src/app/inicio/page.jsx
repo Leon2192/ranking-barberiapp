@@ -69,7 +69,7 @@ const Page = () => {
                     >
                         {barrios.map((barrio) => (
                             <SelectItem key={barrio.nombre} value={barrio.nombre} style={{
-                                backgroundColor: '#ffba08', color: '#fff', fontWeight:'bold'
+                                backgroundColor: '#ffba08', color: '#fff', fontWeight: 'bold'
                             }}>
                                 {barrio.nombre}
                             </SelectItem>
@@ -121,27 +121,20 @@ const Page = () => {
             {ubicacion && (
                 <Map ubicacion={ubicacion} zoom={20} />
             )}
-            <div className="flex justify-center w-full border-t-1 border-solid border-gray-500">
-                <div className="flex w-full max-w-screen-lg mt-1">
-                    <div className="w-1/4 px-5 menuButton">
-                        <CiHome style={{
-                            color: 'fff'
-                        }} size={'3em'} />
+            <div className="fixed bottom-0 w-full bg-gray-800 text-white p-2">
+                <div className="flex justify-around max-w-screen-lg mx-auto">
+                    {/* Los íconos fijos en la parte inferior */}
+                    <div className="menuButton">
+                        <CiHome style={{ color: 'white' }} size={'3em'} />
                     </div>
-                    <div className="w-1/4 px-5 menuButton">
-                        <AiOutlineMenuUnfold style={{
-                            color: 'fff'
-                        }} size={'3em'} />
+                    <div className="menuButton">
+                        <AiOutlineMenuUnfold style={{ color: 'white' }} size={'3em'} />
                     </div>
-                    <div className="w-1/4 px-5 menuButton">
-                        <CiBellOn style={{
-                            color: 'fff'
-                        }} size={'3em'} />
+                    <div className="menuButton">
+                        <CiBellOn style={{ color: 'white' }} size={'3em'} />
                     </div>
-                    <div className="w-1/4 px-5 menuButton'">
-                        <GrConfigure style={{
-                            color: 'fff'
-                        }} size={'3em'} />
+                    <div className="menuButton">
+                        <GrConfigure style={{ color: 'white' }} size={'3em'} />
                     </div>
                 </div>
             </div>
