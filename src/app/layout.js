@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
+import Install from './components/installapp/Install'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <div className="contenedorPrincipal bg-light">
           {children}
+          <Install />
         </div>
       </body>
     </html>
