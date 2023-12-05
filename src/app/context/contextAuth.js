@@ -1,6 +1,7 @@
-import React, { createContext, useState } from "react";
+"use client"
+import React, { createContext, useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -28,7 +29,7 @@ export const AuthProvider = ({ children }) => {
 
     const handleLogout = async () => {
         signOut(auth).then(() => {
-            setUserExist(null)
+            setUserExist(false)
             //toast.success(`Gacias vuelvas prontos! ${dataUser.displayName}`)
             
             router.push('/')
@@ -45,13 +46,14 @@ export const AuthProvider = ({ children }) => {
                 // The signed-in user info.
                 const user = result.user;
 
-                setUserExist(user) // ESTE ESTADO LO USO PARA SWITCHEAR EL BOTON DE INGRESAR MAIL CON EL DE CERRAR SESION
+                setUserExist(true) // ESTE ESTADO LO USO PARA SWITCHEAR EL BOTON DE INGRESAR MAIL CON EL DE CERRAR SESION
                 setDataUser(user) // EN ESTE ESTADO MUESTRO DATA DEL USUARIO
                 toast.success(`Bienvenido/a! ${result.user.displayName}`)
-                console.log('Me loguee')
                 // IdP data available using getAdditionalUserInfo(result)
                 // Redirigir a la página principal
-                router.push('/inicio')
+                // router.push('/inicio')
+
+                console.log('Me loguee')
 
                 // ...
             }).catch((error) => {
@@ -64,6 +66,10 @@ export const AuthProvider = ({ children }) => {
                 // ...
             });
     };
+
+    useEffect(() => {
+        userExist && redirect('/inicio')
+    }, [userExist])
 
     // const data = {
     //     handleLogin,

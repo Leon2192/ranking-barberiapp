@@ -1,12 +1,17 @@
 "use client"
+import Page from './inicio/page'
 import Login from './login/page'
 import { AuthProvider } from '@/app/context/contextAuth'
+import { contextAuth } from "../app/context/contextAuth";
+import { useContext } from 'react';
 
 export default function Home() {
   
+  const { userExist, handleLogout } = useContext(contextAuth) || {};
+
   return (
     <AuthProvider>
-      <Login />
+      {userExist ? <Page/> : <Login />}
     </AuthProvider>
 
   )

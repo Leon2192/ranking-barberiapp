@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Install from './components/installapp/Install'
+import { AuthProvider, contextAuth } from '@/app/context/contextAuth'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,8 +20,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <div className="contenedorPrincipal bg-light">
+        <AuthProvider>
           {children}
-          <Install />
+        </AuthProvider>
+          {/* <Install /> */}
         </div>
       </body>
     </html>

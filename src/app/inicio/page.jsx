@@ -27,7 +27,7 @@ const Page = () => {
 
     /* CONTEXT LOGOUT */
 
-    console.log(userExist);
+    console.log("usuario existe?",userExist);
 
     /* CONTEXT LOGOUT */
 
@@ -87,14 +87,11 @@ const Page = () => {
                         Buscar
                     </Button> */}
                 </form>
-                {
-                    // /* userExist !== undefined &&  */<BtnLogout /> 
-                }
+                <BtnLogout /> 
                 <Toaster
                     position="bottom-right"
                     reverseOrder={false}
                 />
-                <button onClick={handleLogout}>Cerrar</button>
 
 
                 {/* {search.length > 2 && (
