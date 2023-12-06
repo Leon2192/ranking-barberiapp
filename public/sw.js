@@ -1,4 +1,4 @@
-importScripts("https://cdnjs.cloudflare.com/ajax/libs/workbox-core/5.1.2/workbox-core.min.js");
+///importScripts("https://cdnjs.cloudflare.com/ajax/libs/workbox-core/5.1.2/workbox-core.min.js");
 
 // Registra el service worker con el navegador
 self.addEventListener("install", (event) => {
