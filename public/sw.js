@@ -16,6 +16,11 @@ self.addEventListener("install", (event) => {
             ]);
         })
     );
+
+    // Muestra la notificación de instalación
+    // event.waitUntil(self.registration.showNotification("Instalar aplicación en dispositivo"));
+    // Muestra el cuadro de diálogo de instalación
+    event.waitUntil(self.registration.prompt("¿Quieres instalar la aplicación?"));
 });
 
 // Maneja el evento de activación del service worker
