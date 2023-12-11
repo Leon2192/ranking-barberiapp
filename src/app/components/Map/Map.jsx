@@ -50,7 +50,7 @@ const Map = ({ ubicacion, zoom }) => {
             placesService.nearbySearch(
                 {
                     location: barrios[ubicacion],
-                    radius: 200,
+                    radius: 150,
                     type: 'hair_care'
                 },
                 (results, status) => {
@@ -63,7 +63,7 @@ const Map = ({ ubicacion, zoom }) => {
                                 label: {
                                     text: result.name,
                                     color: 'black',
-                                    fontSize: '10px',
+                                    fontSize: '8px',
                                     fontWeight: 'bold'
                                 }
                             });
@@ -75,7 +75,7 @@ const Map = ({ ubicacion, zoom }) => {
             );
         }
     }, [barrios, isLoaded, loadError, map, ubicacion]);
-    
+
     const handleLoad = loadedMap => {
         setMap(loadedMap);
         loadedMap.markers = []; // Inicializar un array para almacenar los marcadores en la instancia del mapa
@@ -93,7 +93,7 @@ const Map = ({ ubicacion, zoom }) => {
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle}
                     center={barrios[ubicacion]}
-                    zoom={13}
+                    zoom={16}
                     onLoad={handleLoad}
                 >
                     <Marker position={barrios[ubicacion]} />
