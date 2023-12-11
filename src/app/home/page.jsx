@@ -65,7 +65,7 @@ const Page = () => {
                 <Image src="/logo2.png" width={200} height={200} alt={'Logo'} />
             </div>
             <div className="flex-1 text-center mb-4">
-                <h1>Donde busco?</h1>
+                {/* <h1>Donde busco?</h1> */}
                 <form onSubmit={handleSubmit} className='flex w-full'>
                     <Select
                         label="¿Donde te queres cortar?"
