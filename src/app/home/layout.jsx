@@ -19,7 +19,9 @@ export default function Layout({ children }) {
                         </Link>
                     </div>
                     <div className="menuButton">
-                        <FaRegStar style={{ color: '#ff006e' }} size={'2.5em'} />
+                        <Link href={'/ranking'}>
+                            <FaRegStar style={{ color: '#ff006e' }} size={'2.5em'} />
+                        </Link>
                     </div>
                     <div className="menuButton">
                         <Link href={'/home'}>
