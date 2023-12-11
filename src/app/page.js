@@ -1,5 +1,5 @@
 "use client"
-import Page from './inicio/page'
+import Page from './home/page'
 import Login from './login/page'
 import { AuthProvider } from '@/app/context/contextAuth'
 import { contextAuth } from "../app/context/contextAuth";

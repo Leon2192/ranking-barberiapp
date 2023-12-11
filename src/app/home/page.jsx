@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { AvatarIcon, Button, Flex, Select, SelectItem } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import Image from "next/image";
-import { CiHome } from "react-icons/ci";
+import { CiHome, CiUser } from "react-icons/ci";
 import { CiBellOn } from "react-icons/ci";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { GrConfigure } from "react-icons/gr";
@@ -16,10 +16,11 @@ import barrios from '../barrios.json'
 import BtnLogout from "../components/buttonLogout/BtnLogout";
 import { contextAuth } from "../context/contextAuth";
 import toast, { Toaster } from 'react-hot-toast';
+import Link from "next/link";
 
 
 const Page = () => {
-    const { userExist, handleLogout } = useContext(contextAuth) || {};
+    const { userExist, dataUser } = useContext(contextAuth) || {};
     const [ubicacion, setUbicacion] = useState("");
     const [search, setSearch] = useState("")
     const [suggestions, setSuggestions] = useState([]);
@@ -27,7 +28,7 @@ const Page = () => {
 
     /* CONTEXT LOGOUT */
 
-    console.log("usuario existe?",userExist);
+    console.log("usuario existe?",userExist, dataUser);
 
     /* CONTEXT LOGOUT */
 
@@ -51,6 +52,7 @@ const Page = () => {
         setUbicacion(value.target.value); // Actualiza el estado con el valor seleccionado del Select
     };
 
+    
     console.log(search)
 
     return (
@@ -119,23 +121,6 @@ const Page = () => {
             {ubicacion && (
                 <Map ubicacion={ubicacion} zoom={20} />
             )}
-            <div className="fixed bottom-0 w-full bg-gray-800 text-white p-2">
-                <div className="flex justify-around max-w-screen-lg mx-auto">
-                    {/* Los íconos fijos en la parte inferior */}
-                    <div className="menuButton">
-                        <CiHome style={{ color: 'white' }} size={'3em'} />
-                    </div>
-                    <div className="menuButton">
-                        <AiOutlineMenuUnfold style={{ color: 'white' }} size={'3em'} />
-                    </div>
-                    <div className="menuButton">
-                        <CiBellOn style={{ color: 'white' }} size={'3em'} />
-                    </div>
-                    <div className="menuButton">
-                        <GrConfigure style={{ color: 'white' }} size={'3em'} />
-                    </div>
-                </div>
-            </div>
         </div>
 
     );

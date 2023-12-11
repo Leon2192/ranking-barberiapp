@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
     const handleLogout = async () => {
         signOut(auth).then(() => {
             setUserExist(false)
-            //toast.success(`Gacias vuelvas prontos! ${dataUser.displayName}`)
+            toast.success(`Gacias vuelvas prontos!`)
             
             router.push('/')
             console.log('Estas deslogueado')
@@ -54,6 +54,7 @@ export const AuthProvider = ({ children }) => {
                 // router.push('/inicio')
 
                 console.log('Me loguee')
+                console.log(dataUser)
 
                 // ...
             }).catch((error) => {
@@ -68,7 +69,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        userExist && redirect('/inicio')
+        userExist && redirect('/home')
     }, [userExist])
 
     // const data = {
