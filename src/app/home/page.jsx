@@ -32,7 +32,7 @@ const Page = () => {
 
     /* CONTEXT LOGOUT */
 
-    console.log("usuario existe?",userExist, dataUser);
+    console.log("usuario existe?", userExist, dataUser);
 
     /* CONTEXT LOGOUT */
 
@@ -56,7 +56,7 @@ const Page = () => {
         setUbicacion(value.target.value); // Actualiza el estado con el valor seleccionado del Select
     };
 
-    
+
     console.log(search)
 
     return (
@@ -82,7 +82,7 @@ const Page = () => {
                     </Select>
 
                 </form>
-                <BtnLogout />
+                {/* <BtnLogout /> */}
                 <Toaster
                     position="bottom-right"
                     reverseOrder={false}
