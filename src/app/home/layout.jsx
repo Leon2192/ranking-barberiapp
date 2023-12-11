@@ -1,6 +1,10 @@
 import { CiBellOn, CiHome, CiUser } from 'react-icons/ci'
 import { AiOutlineMenuUnfold } from 'react-icons/ai'
 import Link from 'next/link'
+import { FaHome } from "react-icons/fa";
+import { FaRegStar } from "react-icons/fa";
+import { FaRegUserCircle } from "react-icons/fa";
+import { FaBell } from "react-icons/fa6";
 
 export default function Layout({ children }) {
     return (
@@ -11,20 +15,20 @@ export default function Layout({ children }) {
                     {/* Los íconos fijos en la parte inferior */}
                     <div className="menuButton">
                         <Link href={'/home'}>
-                            <CiHome style={{ color: 'white' }} size={'3em'} />
+                            <FaHome style={{ color: '#ff006e' }} size={'2.5em'} />
                         </Link>
                     </div>
                     <div className="menuButton">
-                        <AiOutlineMenuUnfold style={{ color: 'white' }} size={'3em'} />
+                        <FaRegStar style={{ color: '#ff006e' }} size={'2.5em'} />
                     </div>
                     <div className="menuButton">
                         <Link href={'/home'}>
-                            <CiBellOn style={{ color: 'white' }} size={'3em'} />
+                            <FaBell style={{ color: '#ff006e' }} size={'2.5em'} />
                         </Link>
                     </div>
                     <div className="menuButton">
                         <Link href={'/home/profile'}>
-                            <CiUser style={{ color: 'white' }} size={'3em'} />
+                            <FaRegUserCircle style={{ color: '#ff006e' }} size={'2.5em'} />
                         </Link>
                     </div>
                 </div>
