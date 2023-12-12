@@ -64,17 +64,22 @@ const Ranking = ({ ubicacion }) => {
             <h2 style={{ color: 'white', textAlign: 'center' }} className='mb-5'>Lugares cercanos:</h2>
             <ul>
                 {places.map((place, index) => (
-                    <Card key={index} className="max-w-[400px] mb-6">
+                    <Card key={index} className="max-w-[400px] mb-6 bg-dark p-1" style={{
+                        border: '2px solid #f20089'
+                    }}>
                         <CardHeader className="flex gap-3 justify-around">
                             <Image
                                 alt="nextui logo"
                                 height={40}
                                 radius="sm"
-                                src='/logo.png'
+                                src='/logo2.png'
                                 width={40}
                             />
                             <div className="flex flex-col">
-                                <p className="text-md">{place.name}</p>
+                                <p className="text-md" style={{
+                                    color: '#fff',
+                                    fontWeight: 'bold'
+                                }}>{place.name}</p>
                             </div>
                             {Array.from({ length: 5 }, (_, i) => (
                                 <span key={i}>
@@ -85,11 +90,19 @@ const Ranking = ({ ubicacion }) => {
                                     )}
                                 </span>
                             ))}
-                            <span className="ml-2">{place.rating}</span>
+                            <span className="ml-2" style={{
+                                color: '#fff'
+                            }}>{place.rating}</span>
                         </CardHeader>
                         <Divider />
                         <CardBody>
-                            <p>{place.vicinity}</p>
+                            <p style={{
+                                color: '#fff',
+                                fontWeight: 'bold',
+                                textDecoration: 'underline'
+                            }}>Domicilio:  <span style={{
+                                color: '#7fc8f8'
+                            }}>{place.vicinity}</span></p>
 
                         </CardBody>
                         <Divider />
