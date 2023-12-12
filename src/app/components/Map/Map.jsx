@@ -56,6 +56,7 @@ const Map = ({ ubicacion, zoom }) => {
                 (results, status) => {
                     if (status === google.maps.places.PlacesServiceStatus.OK) {
                         clearMarkers();
+                        console.log('Estos son los results', results[0].name)
                         results.forEach(result => {
                             const marker = new google.maps.Marker({
                                 position: result.geometry.location,
@@ -86,6 +87,8 @@ const Map = ({ ubicacion, zoom }) => {
     if (loadError) {
         return <div>Error al cargar el mapa</div>;
     }
+
+    console.log('Esto es map', map)
 
     return (
         <div style={{ width: '100%', height: '100%' }}>

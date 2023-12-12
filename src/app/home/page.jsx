@@ -57,7 +57,7 @@ const Page = () => {
     };
 
 
-    console.log(search)
+    console.log(search, "esto es search")
 
     return (
         <div className="min-h-screen flex flex-col justify-center items-center">
@@ -93,7 +93,7 @@ const Page = () => {
             </div>
 
             {ubicacion && (
-                <Map ubicacion={ubicacion} zoom={20} />
+                <Map ubicacion={ubicacion} zoom={20} setUbicacion={setUbicacion} />
             )}
             <div className="fixed bottom-0 w-full bg-gray-900 text-white p-2">
                 <div className="flex justify-around max-w-screen-lg mx-auto p-2">
